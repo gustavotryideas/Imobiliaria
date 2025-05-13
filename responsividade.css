@@ -1,7 +1,8 @@
-/* Ajuste geral para as setas */
+/* Setas centralizadas verticalmente */
 .custom-control {
-  top: -370px; /* ← Aqui você pode ajustar: 60px ou até menos */
-  transform: translateY(0); /* Não centraliza verticalmente mais */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
 }
 
@@ -22,4 +23,15 @@
   .carousel-control-next.custom-control {
     right: 10px;
   }
+}
+
+/* Impede a altura variável entre slides */
+#carouselImoveisDestaque .carousel-inner {
+  min-height: 400px; /* Ajuste conforme seus cards */
+  position: relative;
+}
+
+.card-img-top-sm {
+  height: 150px; /* ou outro valor desejado */
+  object-fit: cover;
 }
