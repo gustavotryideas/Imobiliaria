@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$dbname = 'nome_do_banco';
-$username = 'usuario';
-$password = 'senha';
+$dbname = 'imobiliaria'; 
+$username = 'root';
+$password = ''; // Senha vazia por padrão no XAMPP
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
