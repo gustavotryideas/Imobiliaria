@@ -1,28 +1,16 @@
 <?php
 $tituloPagina = "Contato - Imobiliária";
 include 'includes/header.php';
-
-$mensagem = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $nome = htmlspecialchars($_POST["nome"] ?? '');
-  $email = filter_var($_POST["email"] ?? '', FILTER_VALIDATE_EMAIL);
-  $texto = htmlspecialchars($_POST["mensagem"] ?? '');
-
-  if ($nome && $email && $texto) {
-    $mensagem = "<div class='alert alert-success'>Mensagem enviada com sucesso!</div>";
-  } else {
-    $mensagem = "<div class='alert alert-danger'>Preencha todos os campos corretamente.</div>";
-  }
-}
 ?>
 
 <div class="container mt-5 mb-5">
   <h1 class="text-center mb-4">Fale Conosco</h1>
-  <?= $mensagem ?>
   <div class="row">
     <div class="col-md-6">
-      <form method="POST" action="">
+      <form method="POST" action="https://formsubmit.co/gustavo@tryideas.com.br">
+
+
+        
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>
           <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome completo" required />
@@ -33,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <div class="mb-3">
           <label for="mensagem" class="form-label">Mensagem</label>
-          <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem" required></textarea>
+          <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Escreva uma mensagem" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>

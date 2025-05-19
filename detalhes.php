@@ -56,7 +56,7 @@ if (!$imovel) {
     <div class="row">
         <div class="col-md-6">
             <?php if (!empty($imovel['imagem'])): ?>
-                <img src="assets/img/imoveis/<?= htmlspecialchars($imovel['imagem']) ?>" alt="<?= htmlspecialchars($imovel['titulo']) ?>" class="img-fluid rounded">
+                <img src="assets/img/<?= htmlspecialchars($imovel['imagem']) ?>" alt="<?= htmlspecialchars($imovel['titulo']) ?>" class="img-fluid rounded">
             <?php else: ?>
                 <img src="https://via.placeholder.com/600x400?text=Sem+Imagem" alt="Sem imagem" class="img-fluid rounded">
             <?php endif; ?>

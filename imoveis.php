@@ -1,34 +1,61 @@
 <?php
-include 'includes/header.php';
-include 'includes/db.php';
+session_start();
+require_once '../includes/db.php';
 
-$stmt = $pdo->query("SELECT * FROM imoveis ORDER BY created_at DESC");
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: index.php');
+    exit;
+}
+
+// Buscar imóveis
+$stmt = $pdo->query("SELECT * FROM imoveis ORDER BY id DESC");
 $imoveis = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container mt-5">
-    <h1>Todos os Imóveis</h1>
-    <div class="row">
-        <?php foreach ($imoveis as $imovel): ?>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <?php if ($imovel['imagem']): ?>
-                        <img src="assets/img/imoveis/<?= htmlspecialchars($imovel['imagem']) ?>" class="card-img-top" alt="<?= htmlspecialchars($imovel['titulo']) ?>">
-                    <?php else: ?>
-                        <img src="https://via.placeholder.com/350x250?text=Sem+Imagem" class="card-img-top" alt="Sem Imagem">
-                    <?php endif; ?>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= htmlspecialchars($imovel['titulo']) ?></h5>
-                        <p class="card-text"><?= substr(htmlspecialchars($imovel['descricao']), 0, 100) ?>...</p>
-                        <p class="card-text"><small class="text-muted">Tipo: <?= ucfirst($imovel['tipo']) ?></small></p>
-                        <p class="card-text"><strong>R$ <?= number_format($imovel['preco'], 2, ',', '.') ?></strong></p>
-                        <p class="card-text"><small class="text-muted">Categoria: <?= ucfirst($imovel['categoria']) ?></small></p>
-                        <a href="detalhes.php?id=<?= $imovel['id'] ?>" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerenciar Imóveis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Gerenciar Imóveis</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <a href="adicionar.php" class="btn btn-success">Adicionar Imóvel</a>
+        <div>
+            <a href="../home.php" target="blank"  class="btn btn-outline-primary me-2">Home</a>
+            <a href="logout.php" class="btn btn-secondary">Sair (<?= htmlspecialchars($_SESSION['username']) ?>)</a>
+        </div>
     </div>
-</div>
 
-<?php include 'includes/footer.php'; ?>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Tipo</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($imoveis as $imovel): ?>
+            <tr>
+                <td><?= $imovel['id'] ?></td>
+                <td><?= htmlspecialchars($imovel['titulo']) ?></td>
+                <td><?= htmlspecialchars($imovel['tipo']) ?></td>
+                <td><?= htmlspecialchars($imovel['categoria']) ?></td>
+                <td>R$ <?= number_format($imovel['preco'], 2, ',', '.') ?></td>
+                <td>
+                    <a href="editar.php?id=<?= $imovel['id'] ?>" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="excluir.php?id=<?= $imovel['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
