@@ -25,32 +25,31 @@ Contato: Formulário de contato funcional, com dados enviados por e-mail ou arma
 Estrutura do Projeto IMOBILIARIA
 
 IMOBILIARIA/
+├── admin/ # Painel administrativo (restrito a usuários logados)
+│ ├── adicionar.php # Página para adicionar novo imóvel
+│ ├── editar.php # Página para editar imóvel existente
+│ ├── excluir.php # Página para excluir imóvel
+│ ├── imoveis.php # Painel com listagem dos imóveis
+│ ├── index.php # Página de login do admin
+│ └── logout.php # Encerrar sessão do administrador
 │
-├── admin/                        # Painel administrativo (restrito a usuários logados)
-│   ├── adicionar.php             # Página para adicionar novo imóvel
-│   ├── editar.php                # Página para editar imóvel existente
-│   ├── excluir.php               # Página para excluir imóvel
-│   ├── imoveis.php               # Painel com listagem dos imóveis
-│   ├── index.php                 # Página de login do admin
-│   └── logout.php                # Encerrar sessão do administrador
+├── assets/ # Recursos estáticos (estilos, scripts, imagens)
+│ ├── css/
+│ ├── img/
+│ ├── js/
+│ └── responsividade/
+│ └── responsividade.css # CSS para tornar o site responsivo
 │
-├── assets/                       # Recursos estáticos (estilos, scripts, imagens)
-│   ├── css/
-│   ├── img/
-│   ├── js/
-│   └── responsividade/
-│       └── responsividade.css    # CSS para tornar o site responsivo
+├── includes/ # Arquivos comuns utilizados em múltiplas páginas
+│ ├── db.php # Conexão com o banco de dados (PDO)
+│ ├── footer.php # Rodapé do site
+│ └── header.php # Cabeçalho do site
 │
-├── includes/                     # Arquivos comuns utilizados em múltiplas páginas
-│   ├── db.php                    # Conexão com o banco de dados (PDO)
-│   ├── footer.php                # Rodapé do site
-│   └── header.php                # Cabeçalho do site
-│
-├── aluguel.php                   # Página com listagem de imóveis para aluguel
-├── contato.php                   # Página de formulário de contato
-├── detalhes.php                  # Página com detalhes de um imóvel específico
-├── home.php                      # Página inicial (com imóveis em destaque)
-├── imoveis.php                   # Página com todos os imóveis
-├── servicos.php                  # Página com a lista de serviços oferecidos
-├── sobre.php                     # Página "Sobre nós"
-└── venda.php                     # Página com listagem de imóveis à venda
+├── aluguel.php # Página com listagem de imóveis para aluguel
+├── contato.php # Página de formulário de contato
+├── detalhes.php # Página com detalhes de um imóvel específico
+├── home.php # Página inicial (com imóveis em destaque)
+├── imoveis.php # Página com todos os imóveis
+├── servicos.php # Página com a lista de serviços oferecidos
+├── sobre.php # Página "Sobre nós"
+└── venda.php # Página com listagem de imóveis à venda
