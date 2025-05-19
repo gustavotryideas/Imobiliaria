@@ -24,6 +24,7 @@ Contato: Formulário de contato funcional, com dados enviados por e-mail ou arma
 <!-- estrutura do projeto -->
 Estrutura do Projeto IMOBILIARIA
 
+```
 IMOBILIARIA/
 │
 ├── admin/                        # Painel administrativo (restrito a usuários logados)
@@ -54,3 +55,4 @@ IMOBILIARIA/
 ├── servicos.php                  # Página com a lista de serviços oferecidos
 ├── sobre.php                     # Página "Sobre nós"
 └── venda.php                     # Página com listagem de imóveis à venda
+```
